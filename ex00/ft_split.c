@@ -6,31 +6,31 @@
 /*   By: exam <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 19:52:03 by exam              #+#    #+#             */
-/*   Updated: 2019/07/20 16:51:31 by alabreui         ###   ########.fr       */
+/*   Updated: 2019/07/20 17:07:25 by alabreui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-int		is_separator(char c)
+int		is_separator(char c, char sep)
 {
-	if (c == ' ' || c == '\t' || c == '\n')
+	if (c == sep)
 		return (1);
 	return (0);
 }
 
-int		get_nb_words(char *str)
+int		get_nb_words(char *str, char sep)
 {
 	int result;
 
 	result = 0;
 	while (*str)
 	{
-		if (!is_separator(*str))
+		if (!is_separator(*str, sep))
 			result++;
-		while (*str && !is_separator(*str))
+		while (*str && !is_separator(*str, sep))
 			str++;
-		while (*str && is_separator(*str))
+		while (*str && is_separator(*str, sep))
 			str++;
 	}
 	return (result);
@@ -56,7 +56,7 @@ int		add_str_to_array(char **array, char *str, int nb_word, int length)
 	return (1);
 }
 
-int		write_str(char **array, char *str)
+int		write_str(char **array, char *str, char sep)
 {
 	int nb_word;
 	int length;
@@ -65,31 +65,31 @@ int		write_str(char **array, char *str)
 	while (*str)
 	{
 		length = 0;
-		if (!is_separator(*str))
+		if (!is_separator(*str, sep))
 		{
 			nb_word++;
 		}
-		while (str[length] && !is_separator(str[length]))
+		while (str[length] && !is_separator(str[length], sep))
 			length++;
 		if (!add_str_to_array(array, str, nb_word, length))
 			return (0);
 		str = str + length;
-		while (*str && is_separator(*str))
+		while (*str && is_separator(*str, sep))
 			str++;
 	}
 	return (1);
 }
 
-char	**ft_split(char *str)
+char	**ft_split(char *str, char sep)
 {
 	int		nb_words;
 	char	**array;
 
-	nb_words = get_nb_words(str);
+	nb_words = get_nb_words(str, sep);
 	if (!(array = (char **)malloc(sizeof(char *) * nb_words + 1)))
 		return (0);
 	array[nb_words] = 0;
-	if (!write_str(array, str))
+	if (!write_str(array, str, sep))
 		return (0);
 	return (array);
 }
