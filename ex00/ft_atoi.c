@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alabreui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/20 11:54:29 by alabreui          #+#    #+#             */
-/*   Updated: 2019/07/20 16:04:10 by alabreui         ###   ########.fr       */
+/*   Created: 2019/07/19 19:02:17 by alabreui          #+#    #+#             */
+/*   Updated: 2019/07/20 15:22:19 by alabreui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
-
-# define BUF_SIZE 36
-
-typedef struct	s_dict_entry
+int		ft_atoi(const char *str)
 {
-	int		nb;
-	char	*str;
-}				t_dict_entry;
-int				ft_atoi(const char *str);
-t_dict_entry	*read_dict(char *dict_name);
+	int		result;
+	int		sign;
 
-#endif
+	result = 0;
+	sign = 1;
+	if (*str == '-')
+	{
+		sign =  -1;
+		str++;
+	}
+	while (*str >= '0' && *str <= '9')
+	{
+		result = result * 10 + (*str - '0');
+		str++;
+	}
+	return (sign * result);
+}
