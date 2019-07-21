@@ -6,7 +6,7 @@
 /*   By: alabreui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 12:27:55 by alabreui          #+#    #+#             */
-/*   Updated: 2019/07/21 16:28:33 by sbouatto         ###   ########.fr       */
+/*   Updated: 2019/07/21 18:12:54 by sbouatto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
@@ -38,6 +38,11 @@ int		main(int argc, char **argv)
 	else if (argc == 2)
 	{
 		given_number = argv[1];
+		if (*given_number == '0')
+		{
+			ft_error();
+			return (0);
+		}
 		while (*given_number)
 		{
 			if (*given_number < '0' || *given_number > '9')
@@ -47,6 +52,30 @@ int		main(int argc, char **argv)
 			}
 			given_number++;
 		}
+		array = read_dict(dict_name);
 	}
+	else if (argc == 3)
+	{
+		given_number = argv[2];
+		while(*given_number)
+		{
+			if (*given_number < '0' || *given_number> '9')
+			{
+				ft_error();
+				return(0);
+			}
+			given_number++;
+		}
+		dict_name = argv[1];
+	}
+/*	printf("%s\n", dict_name);
+	array = read_dict(dict_name);
+	printf("%s", read_dict(dict_name)->str);
+	if (array == 0)
+	{
+		ft_error();
+		return(0);
+	}
+*/
 	return (0);
 }
