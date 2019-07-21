@@ -6,7 +6,7 @@
 /*   By: asambron <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/21 16:14:16 by asambron          #+#    #+#             */
-/*   Updated: 2019/07/21 21:50:22 by asambron         ###   ########.fr       */
+/*   Updated: 2019/07/21 21:59:47 by asambron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ void	dtoa2(t_dict_entry *dic, char	*nombre)
 		dtoa2(dic, dest);
 		while ((i++ < 10) && ft_bingo(dic, ft_str_pow_10(i,ind)))
 			   ;	
+		printf("%d\n", i);
 		dtoa2(dic, ft_str_pow_10(i-1,ind));
 		dtoa2(dic, nombre + ft_strlen(nombre) - ind);
 	}
