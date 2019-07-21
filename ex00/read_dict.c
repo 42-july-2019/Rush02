@@ -6,7 +6,7 @@
 /*   By: alabreui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 12:13:51 by alabreui          #+#    #+#             */
-/*   Updated: 2019/07/21 16:09:35 by alabreui         ###   ########.fr       */
+/*   Updated: 2019/07/21 19:02:56 by alabreui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
@@ -65,9 +65,23 @@ int				set_dict_entry_el(t_dict_entry *element, char **strs)
 	int		start;
 	int		length;
 	int		j;
+	char	*curr_nb;
 	char	*curr_str;
 
-	element->nb = strs[0];
+	length = 0;
+	while (strs[0][length] && strs[0][length] != ' ' && strs[0][length] != '\t')
+		length++;
+	if (!(curr_nb =
+				((char *)malloc(sizeof(char) * length + 1))))
+		return (0);
+	j = 0;
+	while (j < length && strs[0][j] != ' ' && strs[0][j] != '\t')
+	{
+		curr_nb[j] = strs[0][j];
+		j++;
+	}
+	curr_nb[j] = '\0';
+	element->nb = curr_nb;
 	start = 0;
 	while (strs[1][start] == ' ' || strs[1][start] == '\t')
 		start++;
@@ -125,6 +139,8 @@ t_dict_entry	*read_dict(char *dict_name)
 	if (dict_ref == -1)
 		return (0);
 	get_dict_data(dict_full_data, dict_ref);
+	if (close(dict_ref) == -1)
+		return (0);
 	if (!(dict_array_data = ft_split(dict_full_data, '\n')))
 		return (0);
 	if (!format_dict_data(&array, dict_array_data))
@@ -139,7 +155,5 @@ t_dict_entry	*read_dict(char *dict_name)
 	dict_full_data = 0;
 	free(dict_array_data);
 	dict_array_data = 0;
-	if (!close(dict_ref))
-		return (0);
 	return (array);
 }
