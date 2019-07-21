@@ -6,7 +6,7 @@
 /*   By: alabreui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 12:27:55 by alabreui          #+#    #+#             */
-/*   Updated: 2019/07/21 18:33:03 by sbouatto         ###   ########.fr       */
+/*   Updated: 2019/07/21 19:31:26 by sbouatto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
@@ -27,7 +27,7 @@ int		main(int argc, char **argv)
 {
 	char			*dict_name;
 	char			*given_number;
-//t_dict_entry	*array;
+	t_dict_entry	*array;
 
 	dict_name = "numbers.dict";
 	if (argc < 2 || argc > 3)
