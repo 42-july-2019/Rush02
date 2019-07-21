@@ -6,7 +6,7 @@
 /*   By: alabreui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 12:13:51 by alabreui          #+#    #+#             */
-/*   Updated: 2019/07/21 14:29:31 by alabreui         ###   ########.fr       */
+/*   Updated: 2019/07/21 14:34:24 by alabreui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
@@ -129,7 +129,7 @@ t_dict_entry	*read_dict(char *dict_name)
 		return (0);
 	if (!format_dict_data(&array, dict_array_data))
 		return (0);
-	i = 0;
+//	i = 0;
 //	while (array[i].str)
 //	{
 //		printf("%d : %s, ", array[i].nb, array[i].str);
