@@ -6,7 +6,7 @@
 /*   By: asambron <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/21 16:14:16 by asambron          #+#    #+#             */
-/*   Updated: 2019/07/21 21:59:47 by asambron         ###   ########.fr       */
+/*   Updated: 2019/07/21 23:16:49 by alabreui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,6 @@ int		ft_bingo(t_dict_entry *dic, char *nombre)
 		i++;
 	}
 	return -1;
-}
-int		ft_strlen(char *s)
-{
-	int i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	return i;
 }
 
 int		ft_biggest_10(t_dict_entry *dic, char *nombre)
