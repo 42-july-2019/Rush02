@@ -27,7 +27,7 @@ int		main(int argc, char **argv)
 {
 	char			*dict_name;
 	char			*given_number;
-	t_dict_entry	*array;
+//t_dict_entry	*array;
 
 	dict_name = "numbers.dict";
 	if (argc < 2 || argc > 3)
