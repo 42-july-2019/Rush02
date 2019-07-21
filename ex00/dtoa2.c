@@ -6,7 +6,7 @@
 /*   By: asambron <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/21 16:14:16 by asambron          #+#    #+#             */
-/*   Updated: 2019/07/21 19:11:02 by asambron         ###   ########.fr       */
+/*   Updated: 2019/07/21 21:50:22 by asambron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ int		ft_bingo(t_dict_entry *dic, char *nombre)
 	int i;
 
 	i = 0;
-	while (dic->str)
+//	while (i < 32)
+	while (dic[i].str != '\0')
 	{
 		if (strcmp(nombre, dic[i].nb) == 0)
 			return i;
@@ -40,26 +41,32 @@ int		ft_strlen(char *s)
 
 int		ft_biggest_10(t_dict_entry *dic, char *nombre)
 {
-	char  *ft_str_pow_10(int ind);
+	char  *ft_str_pow_10(int c, int ind);
 	int i;
-
+	int bingo;
+	
+	i = 0;
 	while (nombre[i])
 		i++;
 	while (i > 0)
 	{
-		if (ft_bingo(dic, ft_str_pow_10(i)) != -1)
-			return i;
+		bingo = ft_bingo(dic, ft_str_pow_10(1,i-1));
+		if (bingo != -1)
+		{
+			return i-1;
+		}
+		i--;
 	}
 	return -1;
 }
 
-char  *ft_str_pow_10(int ind)
+char  *ft_str_pow_10(int c, int ind)
 {
 	int i;
 	char *str;
 
 	str = malloc( (ind  + 2 ) * sizeof(char)); 
-	str[0] = '1';
+	str[0] = '0'+ c;
 	i = 1;
 	while (i<=ind)
 		str[i++] = '0';
@@ -78,7 +85,7 @@ char 	*ft_cut_string_left(char *nombre, int i)
 	if ((dest = malloc(range * sizeof(char))) == NULL)
 		return 0;
 	j = 0;
-	while (j < i)
+	while (j < range - 1)
 	{
 	   dest[j] = nombre[j];
 	   j++;
@@ -91,19 +98,23 @@ void	dtoa2(t_dict_entry *dic, char	*nombre)
 {
 	int bingo;
 	int ind;
+	int i;
 
+	i = 0;
 	if ((bingo = ft_bingo(dic, nombre)) != -1)
-		printf("%s\n", dic[bingo].nb);
+		printf("%s", dic[bingo].str);
 	else
 	{
-		if ((ind = ft_biggest_10(dic, nombre)) == -1)
-				return ;
-		dtoa2(dic, ft_cut_string_left(nombre, ind));
-		dtoa2(dic, ft_str_pow_10(ind));
+		ind = ft_biggest_10(dic, nombre);
+		char *dest = ft_cut_string_left(nombre, ind);
+		dtoa2(dic, dest);
+		while ((i++ < 10) && ft_bingo(dic, ft_str_pow_10(i,ind)))
+			   ;	
+		dtoa2(dic, ft_str_pow_10(i-1,ind));
 		dtoa2(dic, nombre + ft_strlen(nombre) - ind);
 	}
 }
-
+/*
 int main()
 {
 	char *s = ft_str_pow_10(6);
@@ -111,4 +122,4 @@ int main()
 	printf("%s\n", s);
 
 	return 0;
-}
+}kkkk*/
