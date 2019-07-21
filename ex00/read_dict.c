@@ -6,7 +6,7 @@
 /*   By: alabreui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 12:13:51 by alabreui          #+#    #+#             */
-/*   Updated: 2019/07/21 14:34:24 by alabreui         ###   ########.fr       */
+/*   Updated: 2019/07/21 16:09:35 by alabreui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
@@ -67,7 +67,7 @@ int				set_dict_entry_el(t_dict_entry *element, char **strs)
 	int		j;
 	char	*curr_str;
 
-	element->nb = ft_atoi(strs[0]);
+	element->nb = strs[0];
 	start = 0;
 	while (strs[1][start] == ' ' || strs[1][start] == '\t')
 		start++;
@@ -132,7 +132,7 @@ t_dict_entry	*read_dict(char *dict_name)
 //	i = 0;
 //	while (array[i].str)
 //	{
-//		printf("%d : %s, ", array[i].nb, array[i].str);
+//		printf("%s : %s, ", array[i].nb, array[i].str);
 //		i++;
 //	}
 	free(dict_full_data);

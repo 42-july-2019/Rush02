@@ -6,7 +6,7 @@
 /*   By: alabreui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 11:54:29 by alabreui          #+#    #+#             */
-/*   Updated: 2019/07/20 17:07:55 by alabreui         ###   ########.fr       */
+/*   Updated: 2019/07/21 16:08:28 by alabreui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 typedef struct	s_dict_entry
 {
-	int		nb;
+	char	*nb;
 	char	*str;
 }				t_dict_entry;
 
