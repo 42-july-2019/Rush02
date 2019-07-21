@@ -6,21 +6,38 @@
 /*   By: alabreui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 12:27:55 by alabreui          #+#    #+#             */
-/*   Updated: 2019/07/21 19:31:26 by sbouatto         ###   ########.fr       */
+/*   Updated: 2019/07/21 21:36:18 by alabreui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
+
 #include <unistd.h>
 #include "utils.h"
 
-void	ft_error(void)
+int		ft_error(void)
 {
 	write(1, "ERROR\n", 6);
+	return (0);
 }
 
-void	ft_error_dict(void)
+int		ft_error_dict(void)
 {
 	write(1, "DICT ERROR\n", 11);
+	return (0);
+}
+
+int		check_given_number(char *given_number)
+{
+	if (*given_number == '0')
+	{
+		return (ft_error());
+	}
+	while (*given_number)
+	{
+		if (*given_number < '0' || *given_number > '9')
+			return (ft_error());
+		given_number++;
+	}
+	return (1);
 }
 
 int		main(int argc, char **argv)
@@ -31,49 +48,22 @@ int		main(int argc, char **argv)
 
 	dict_name = "numbers.dict";
 	if (argc < 2 || argc > 3)
-	{
-		ft_error();
-		return(0);
-	}
+		return (ft_error());
 	else if (argc == 2)
 	{
 		given_number = argv[1];
-		if (*given_number == '0')
-		{
-			ft_error();
+		if (!check_given_number(given_number))
 			return (0);
-		}
-		while (*given_number)
-		{
-			if (*given_number < '0' || *given_number > '9')
-			{
-				ft_error();
-				return (0);
-			}
-			given_number++;
-		}
 	}
 	else if (argc == 3)
 	{
 		given_number = argv[2];
-		while(*given_number)
-		{
-			if (*given_number < '0' || *given_number> '9')
-			{
-				ft_error();
-				return(0);
-			}
-			given_number++;
-		}
+		if (!check_given_number(given_number))
+			return (0);
 		dict_name = argv[1];
 	}
 	array = read_dict(dict_name);
-//	printf("%s", read_dict(dict_name)->str);
 	if (array == 0)
-	{
-		ft_error_dict();
-		return(0);
-	}
-
+		return (ft_error_dict());
 	return (0);
 }
