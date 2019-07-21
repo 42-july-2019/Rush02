@@ -6,7 +6,7 @@
 /*   By: alabreui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 12:13:51 by alabreui          #+#    #+#             */
-/*   Updated: 2019/07/21 14:00:58 by alabreui         ###   ########.fr       */
+/*   Updated: 2019/07/21 14:29:31 by alabreui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
@@ -60,7 +60,7 @@ void			get_dict_data(char *dict_full_data, int dict_ref)
 	dict_full_data[total_size_read] = '\0';
 }
 
-int			set_dict_entry_el(t_dict_entry *element, char **strs)
+int				set_dict_entry_el(t_dict_entry *element, char **strs)
 {
 	int		start;
 	int		length;
@@ -88,7 +88,7 @@ int			set_dict_entry_el(t_dict_entry *element, char **strs)
 	return (1);
 }
 
-int			format_dict_data(t_dict_entry **array, char **dict_array)
+int				format_dict_data(t_dict_entry **array, char **dict_array)
 {
 	int				i;
 	int				length;
@@ -119,22 +119,22 @@ t_dict_entry	*read_dict(char *dict_name)
 	char			*dict_full_data;
 	char			**dict_array_data;
 	t_dict_entry	*array;
-	int	i;
 
+//	int	i;
 	open_dict_data(&dict_full_data, dict_name, &dict_ref);
 	if (dict_ref == -1)
 		return (0);
 	get_dict_data(dict_full_data, dict_ref);
-	if(!(dict_array_data = ft_split(dict_full_data, '\n')))
+	if (!(dict_array_data = ft_split(dict_full_data, '\n')))
 		return (0);
 	if (!format_dict_data(&array, dict_array_data))
 		return (0);
 	i = 0;
-	while (array[i].str)
-	{
-		printf("%d : %s, ", array[i].nb, array[i].str);
-		i++;
-	}
+//	while (array[i].str)
+//	{
+//		printf("%d : %s, ", array[i].nb, array[i].str);
+//		i++;
+//	}
 	free(dict_full_data);
 	dict_full_data = 0;
 	free(dict_array_data);

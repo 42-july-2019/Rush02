@@ -6,7 +6,7 @@
 /*   By: asambron <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 14:55:46 by asambron          #+#    #+#             */
-/*   Updated: 2019/07/20 19:17:53 by asambron         ###   ########.fr       */
+/*   Updated: 2019/07/21 14:25:58 by alabreui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,18 @@ int		ft_strlen(char *str)
 	i = 0;
 	while (str[i])
 		i++;
-	return i;
+	return (i);
 }
 
 char	*ft_digit_to_a(t_dict_entry *dic, int clef, int *erreur)
 {
 	int ft_search(t_dict_entry *dic, int clef, int *erreur);
 	int i;
-	i = ft_search(dic, clef, erreur);
 
+	i = ft_search(dic, clef, erreur);
 	if (i == -1)
-		return "\0";
-	return dic[i].str;
+		return ("\0");
+	return (dic[i].str);
 }
 
 int		ft_pow_10(int taille)
@@ -46,7 +46,7 @@ int		ft_pow_10(int taille)
 		n *= 10;
 		i++;
 	}
-	return n;
+	return (n);
 }
 
 char	*ft_strcat(char *dest, char *src)
@@ -59,11 +59,11 @@ char	*ft_strcat(char *dest, char *src)
 	while (dest[i] != '\0')
 		i++;
 	while ((dest[i++] = src[j++]) != '\0')
-		;					
+		;
 	return (dest);
 }
 
-int ft_search(t_dict_entry *dic, int clef, int *erreur)
+int		ft_search(t_dict_entry *dic, int clef, int *erreur)
 {
 	int i;
 
@@ -71,11 +71,11 @@ int ft_search(t_dict_entry *dic, int clef, int *erreur)
 	while (i < 50)
 	{
 		if (clef == dic[i].nb)
-			return i;
+			return (i);
 		i++;
 	}
 	*erreur = 1;
-	return -1;
+	return (-1);
 }
 
 char	*ft_itoa(char *chaine, t_dict_entry *dic, char *nombre)
@@ -91,9 +91,9 @@ char	*ft_itoa(char *chaine, t_dict_entry *dic, char *nombre)
 	{
 		ft_strcat(chaine, ft_digit_to_a(dic, ft_pow_10(t_n - 1 - i) * (nombre[i] - '0'), erreur));
 		if (erreur[0] == 1)
-			return "\0";
+			return ("\0");
 		ft_strcat(chaine, " ");
 		i++;
 	}
-	return chaine;
+	return (chaine);
 }
