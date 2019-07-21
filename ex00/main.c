@@ -6,7 +6,7 @@
 /*   By: alabreui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 12:27:55 by alabreui          #+#    #+#             */
-/*   Updated: 2019/07/21 14:33:23 by alabreui         ###   ########.fr       */
+/*   Updated: 2019/07/21 15:38:31 by asambron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int		main(int argc, char **argv)
 	char	*dict_name;
 
 	dict_name = "numbers.dict";
+	read_dict(dict_name);
 	if (argc == 1)
 		ft_error();
 	if (argc == 2)
