@@ -6,7 +6,7 @@
 /*   By: alabreui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 11:54:29 by alabreui          #+#    #+#             */
-/*   Updated: 2019/07/21 16:08:28 by alabreui         ###   ########.fr       */
+/*   Updated: 2019/07/21 22:24:47 by alabreui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ typedef struct	s_dict_entry
 }				t_dict_entry;
 
 int				ft_atoi(const char *str);
+int				ft_strlen(char *str);
+int				ft_strcmp(char *s1, char *s2);
 char			**ft_split(char *str, char sep);
 t_dict_entry	*read_dict(char *dict_name);
 
